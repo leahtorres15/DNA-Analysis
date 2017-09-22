@@ -10,29 +10,25 @@ int main (int argc, char *argv[])
    char OriginalDNAStrand[1000];
    char line[255];
    int isint;
-   int choice;
-   char *menu = "Menu\n"
-                "[1] Complementary RNA Strand\n"
-                "[2] Complementary DNA Strand\n"
-                "[3] Quit\n";
    int NucleotideNumber;
    char c;
+   printf("Input DNA Strand: ");
+   scanf("%s", OriginalDNAStrand);
 
    while (1)
    {
-      printf("%sChoice: ", menu);
+      //printf("%sChoice: ", menu);
       fgets(line, sizeof(line), stdin);
+/* ******Get Rid of Choice Stuff*********
       isint = sscanf(line, "%d", &choice);      
       if(! isint)
       {
          printf("Invalid Choice.\n");
          continue;
-      }
+      }*/
 
-      if(choice == 1)
-      {
-         printf("Input DNA Strand: ");
-         scanf("%s", &OriginalDNAStrand);
+//      if(choice == 1)
+//      {
          NucleotideNumber = strlen(OriginalDNAStrand);
          char *RNAStrand = (char*) malloc(NucleotideNumber*sizeof(char));
          for(i=0; i<NucleotideNumber; i++)
@@ -44,14 +40,15 @@ int main (int argc, char *argv[])
                return 1;
             }
          } 
-         printf("%s\n", RNAStrand);
-         printf("Number of Nucleotides Analyzed: %d\n\n", NucleotideNumber);
-      }
-      else if(choice == 2)
-      {
-         printf("Input DNA Strand: ");
-         scanf("%s", &OriginalDNAStrand);
-         NucleotideNumber = strlen(OriginalDNAStrand);
+         printf("Original DNA Strand: %s\n", OriginalDNAStrand);
+         printf("RNA: %s\n", RNAStrand);
+//         printf("Number of Nucleotides Analyzed: %d\n\n", NucleotideNumber);
+//      }
+//      else if(choice == 2)
+//      {
+//         printf("Input DNA Strand: ");
+//         scanf("%s", &OriginalDNAStrand);
+//         NucleotideNumber = strlen(OriginalDNAStrand);
          char *NewDNAStrand = (char*) malloc(NucleotideNumber*sizeof(char));
          for(i=0; i<NucleotideNumber; i++)
          {
@@ -62,21 +59,12 @@ int main (int argc, char *argv[])
                return 1;
             }
          }
-         printf("%s\n", NewDNAStrand);
+         printf("Complementary DNA Strand: %s\n", NewDNAStrand);
          printf("Number of Nucleotides Analyzed: %d\n\n", NucleotideNumber);
-      }
-      else if(choice == 3)
-      {
-         break;
-      }
-      else
-      {
-         printf("Invalid Choice.\n");
-      }
+//      }
 
-      while ((c = getchar()) != '\n' && c != EOF)
-      { 
-      }
+      printf("Input DNA Strand: ");
+      scanf("%s", OriginalDNAStrand);
    }
    return 0;
 }
